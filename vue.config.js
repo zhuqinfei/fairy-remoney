@@ -5,6 +5,15 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
     ? '/remoney-website/'
     : '/',
+
+  devServer: {
+    port: 3033,
+    host: "0.0.0.0",
+    https: false, // https:{type:Boolean}
+    open: true, // 配置自动启动浏览器
+    disableHostCheck: true, //webpack4.0 开启热更新
+  },
+
   assetsDir:'public',
   lintOnSave: false,
   chainWebpack: config => {

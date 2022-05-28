@@ -54,32 +54,40 @@ const store= new Vuex.Store({
     },
     createRecord(state, record) {
       const record2: RecordItem = clone(record);//深拷贝，经过两次转换变成两个不同地址,但是内容完成一样
-      record2.createdAt = new Date().toISOString();
+      // record2.createdAt = new Date().toISOString();
       state.recordList.push(record2);
       store.commit('saveRecords')
     },
     saveRecords(state) {
         window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
     },
+
+
     fetchTags(state) {
        state.tagList= JSON.parse(window.localStorage.getItem('tagList') || '[]');
        if( !state.tagList || state.tagList.length===0){
-         store.commit('createTag','衣')
-         store.commit('createTag','食')
-         store.commit('createTag','住')
-         store.commit('createTag','行')
+         store.commit('createTag',{name:'canyin',value:'餐饮',type:'-'})
+         store.commit('createTag',{name:'maicai',value:'买菜',type:'-'})
+         store.commit('createTag',{name:'shuiguo',value:'水果',type:'-'})
+         store.commit('createTag',{name:'lingshi',value:'零食',type:'-'})
+         store.commit('createTag',{name:'gongzi',value:'工资',type:'+'})
+         store.commit('createTag',{name:'hongbao',value:'红包',type:'+'})
+         store.commit('createTag',{name:'jiangjin',value:'奖金',type:'+'})
+         store.commit('createTag',{name:'jianzhi',value:'兼职',type:'+'})
        }
     },
-    createTag(state,name: string) {
+    createTag(state,options:Tag) {
       state.createTagError=null
+      const {name,value,type}=options
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
         state.createTagError=new Error('tag name duplicated')
         return
       }else{
         const id = createId().toString();
-        state.tagList.push({id, name: name});
+        state.tagList.push({id, name: name,value:value,type:type});
         store.commit('saveTags');
+        router.push('/money')
       }
     },
     saveTags(state) {

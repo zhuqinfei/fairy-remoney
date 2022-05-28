@@ -6,12 +6,18 @@ import store from './store';
 import Nav from '@/components/Nav.vue';
 import Layout from '@/components/Layout.vue';
 import Icon from '@/components/Icon.vue';
+import TagsIcons from '@/components/TagsIcons.vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 
 Vue.config.productionTip = false;
 Vue.component('Nav', Nav);
 Vue.component('Layout',Layout)
 Vue.component('Icon',Icon)
+Vue.component('TagsIcons',TagsIcons)
 
+Vue.use(ElementUI);
 
 new Vue({
   router,

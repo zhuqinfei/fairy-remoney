@@ -5,13 +5,16 @@ import Labels from '@/views/Labels.vue';
 import Statistics from '@/views/Statistics.vue';
 import NotFound from '@/views/NotFound.vue';
 import EditLabel from '@/views/EditLabel.vue';
+import TagsList from '@/views/TagsList.vue'
+import Account from '@/views/Account.vue';
+import Chart from '@/views/Chart.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path:'/',
-    redirect:'/money'
+    redirect:'/statistics'
   },
   {
     path:'/money',
@@ -22,8 +25,24 @@ const routes: Array<RouteConfig> = [
     component:Labels
   },
   {
+    path:'/tagsList',
+    component:TagsList
+  },
+  {
     path:'/statistics',
     component:Statistics
+  },
+  {
+    path:'/statistics',
+    component:Statistics
+  },
+  {
+    path:'/account',
+    component:Account
+  },
+  {
+    path:'/chart',
+    component:Chart
   },
   {
     path:'/labels/edit/:id',

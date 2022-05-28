@@ -1,14 +1,16 @@
 type RecordItem = {
-  tags: Tag[]
+  tags: Tag
   notes: string
   type: string
   amount: number // 数据类型 object | string
-  createdAt?: string  // 类 / 构造函数
+  createdAt: string  // 类 / 构造函数
 }
 
 type Tag={
-  id:string
+  id?:string
   name:string
+  value:string
+  type:string
 }
 
 type TagListModel={

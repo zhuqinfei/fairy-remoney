@@ -1,5 +1,4 @@
 <template>
-  <div>
     <label class="formItem">
       <span class="name">{{this.fieldName}}</span>
       <input type="text"
@@ -7,24 +6,23 @@
              @input="onValueChange($event.target.value)"
              :placeholder="placeholder">
     </label>
-  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import {Component,Prop} from 'vue-property-decorator';
 
+
+
 @Component
-export default class FormItem extends Vue{
-  @Prop({default:''}) readonly value!:string
+export default class FormItem extends Vue {
+  @Prop({default: ''}) readonly value!: string
+  @Prop({required: true}) fieldName!: string
+  @Prop() placeholder?: string
 
-  @Prop({required:true}) fieldName!:string
-  @Prop() placeholder?:string
-
-
-    onValueChange(value:string){
-    this.$emit('update:value',value)
-    }
+  onValueChange(value: string) {
+    this.$emit('update:value', value)
+  }
 
 }
 </script>
@@ -32,18 +30,22 @@ export default class FormItem extends Vue{
 <style lang="scss" scoped>
 .formItem{
   font-size:14px;
-  padding:0 16px;
   display: flex;
   align-items:center;
+  border-radius: 4px;
+  border:1px solid #DCDFE6;
+  background: #ffffff;
+  width: 60%;
   > .name{
-    padding-right: 16px;
+    width:100%;
+    margin:0 0 0 14px;
   }
   input{
-    height:40px;
+    height:20px;
     flex-grow:1;
     background: transparent;
     border:none;
-    padding-right:16px;
+    width: 160px;
   }
 }
 </style>
