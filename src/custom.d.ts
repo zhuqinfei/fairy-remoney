@@ -27,7 +27,8 @@ type RootState={
   createRecordError:Error | null,
   createTagError:Error | null,
   tagList:Tag[],
-  currentTag?:Tag
+  currentTag?:Tag,
+  currentRecordItem?:RecordItem
 }
 
 interface Window {

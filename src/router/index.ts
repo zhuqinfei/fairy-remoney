@@ -8,6 +8,7 @@ import EditLabel from '@/views/EditLabel.vue';
 import TagsList from '@/views/TagsList.vue'
 import Account from '@/views/Account.vue';
 import Chart from '@/views/Chart.vue';
+import EditStatistics from '@/views/EditStatistics.vue';
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,10 @@ const routes: Array<RouteConfig> = [
   {
     path:'/labels/edit/:id',
     component:EditLabel
+  },
+  {
+    path:'/statistics/edit/:id',
+    component:EditStatistics
   },
   {
     path:'*',  //'*'放在路由最后，表示前面都检查完没有符合的，剩余的其他情况

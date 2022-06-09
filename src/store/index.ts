@@ -12,26 +12,15 @@ const store= new Vuex.Store({
     createRecordError:null,  //判断保持能否成功
     createTagError: null,  //判断创建能否成功
     tagList:[],
-    currentTag:undefined
+    currentTag:undefined,
+    currentRecordItem:undefined,
   } as RootState,
   mutations: {
     setCurrentTag(state,id:string){
       state.currentTag=state.tagList.filter(t => t.id === id)[0];
     },
-    updateTag(state,payload:{id:string,name:string}){ //只能接受一个参数，所以可以改成对象形式
-      const {id,name}=payload
-      const idList = state.tagList.map(item => item.id);
-      if (idList.indexOf(id) >= 0) {
-        const names = state.tagList.map(item => item.name);
-        if (names.indexOf(name) >= 0) {
-          window.alert('标签名重复了')
-        } else {
-          const tag = state.tagList.filter(item => item.id === id)[0];
-          tag.name = name;
-          tag.id = name;
-          store.commit('saveTags')
-        }
-      }
+    setCurrentRecord(state,id:string){
+      state.currentRecordItem=state.recordList.filter(t => t.tags.id === id)[0];
     },
     removeTag(state,id: string) {
       let index = -1;
@@ -44,6 +33,22 @@ const store= new Vuex.Store({
       if(index>=0){
         state.tagList.splice(index, 1)
         store.commit('saveTags')
+        router.back()
+      }else{
+        window.alert('删除失败');
+      }
+    },
+    removeRecordItem(state,id: string) {
+      let index = -1;
+      for (let i = 0; i < state.recordList.length; i++) {
+        if (state.recordList[i].tags.id === id) {
+          index = i;
+          break;
+        }
+      }
+      if(index>=0){
+        state.recordList.splice(index, 1)
+        store.commit('saveRecords')
         router.back()
       }else{
         window.alert('删除失败');

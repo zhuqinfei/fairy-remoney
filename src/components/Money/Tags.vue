@@ -1,8 +1,5 @@
 <template>
   <div class="tags">
-
-<!--      <button @click="createTag">新增标签</button>-->
-
     <div class="tag" v-for="tag in newTagList"
          :key="tag.id"
          @click="toggle(tag)">
@@ -21,12 +18,6 @@
       </svg>
       <div class="delete">删除</div>
     </router-link>
-
-<!--    <ul class="current">-->
-<!--      <li v-for="tag in tagList" :key="tag.id"-->
-<!--          :class="{selected:selectedTags.indexOf(tag)>=0}"-->
-<!--          @click="toggle(tag)">{{tag.name}}</li>-->
-<!--    </ul>-->
   </div>
 </template>
 
@@ -38,11 +29,7 @@ import {mixins} from 'vue-class-component';
 @Component
 export default class Tags extends mixins(TagHelper) {
   @Prop(String) type?:string
-
-  // selectedTags: string[] = [];
-  // selectedTags:Tag={id:'1',name:'canyin',value:'餐饮',type:'-'}
    selectedTags:Tag={id:'',name:'',value:'',type:''}
-
 
   get tagList(){
     return this.$store.state.tagList as Tag[];
@@ -67,13 +54,6 @@ export default class Tags extends mixins(TagHelper) {
   toggle(tag: Tag) {
     this.selectedTags=tag
     this.$emit('update:value',this.selectedTags)
-    // const index = this.selectedTags.indexOf(tag);
-    // if (index >= 0) {
-    //   this.selectedTags.splice(index, 1);
-    // } else {
-    //   this.selectedTags.push(tag);
-    // }
-    // this.$emit('update:value',this.selectedTags)
   }
 }
 </script>
@@ -101,24 +81,6 @@ export default class Tags extends mixins(TagHelper) {
 
     }
   }
-  //> .current {
-  //  display: flex;
-  //  flex-wrap: wrap;
-  //  > li {
-  //    background: #d9d9d9;
-  //    height: 24px;
-  //    line-height: 24px;
-  //    border-radius: (24px/2);
-  //    padding: 0 16px;
-  //    margin-right: 12px;
-  //    margin-top: 4px;
-  //    $bg:#d9d9d9;
-  //    &.selected{
-  //      background:red;
-  //      color:white;
-  //    }
-  //  }
-  //}
   >.new{
     display: flex;
     font-size: 12px;

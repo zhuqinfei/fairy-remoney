@@ -14,10 +14,6 @@
          <Icon name="right" class="right"/>
        </router-link>
      </div>
-<!--     <div class="createTag-wrapper">-->
-<!--       <Button class="createTag"-->
-<!--               @click="createTag">新增标签</Button>-->
-<!--     </div>-->
    </Layout>
    <Nav/>
  </div>
@@ -75,19 +71,6 @@ export default class Labels extends mixins(TagHelper){
     }
   }
 }
-//.createTag {
-//  background: #767676;
-//  color: white;
-//  border-radius: 4px;
-//  border: none;
-//  height: 40px;
-//  padding:0 16px;
-//  &-wrapper {
-//    text-align: center;
-//    padding:16px;
-//    margin-top:44-16px;
-//  }
-//}
 .labels{
   display: flex;
   flex-direction: column;

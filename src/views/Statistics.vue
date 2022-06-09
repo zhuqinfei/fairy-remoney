@@ -1,6 +1,5 @@
 <template>
   <div class="statistics">
-<!--    <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>-->
       <div class="nav-item">
           <el-date-picker
               v-model="value2"
@@ -27,21 +26,21 @@
             <span class="weeks">{{weeks(group.title)}} </span>
             <span>￥{{group.total.toFixed(2)}}</span>
           </h3>
-          <router-link to="">
-            <ol>
-              <li v-for="item in group.items" :key="item.id" class="record">
-                <svg class="icon" aria-hidden="true" >
-                  <use :xlink:href="'#icon-'+tagStringName(item.tags)"/>
-                </svg>
-                <span>{{tagStringValue(item.tags)}}</span>
-                <span class="notes">{{item.notes}}</span>
-                <span>{{item.type}}{{item.amount.toFixed(2)}}</span>
-                <svg class="forward" aria-hidden="true" >
-                  <use :xlink:href="'#icon-qianjin'"/>
-                </svg>
-              </li>
+            <ol  v-for="item in group.items" :key="item.id">
+              <router-link :to="`/statistics/edit/${item.tags.id}`">
+                <li  class="record">
+                  <svg class="icon" aria-hidden="true" >
+                    <use :xlink:href="'#icon-'+tagStringName(item.tags)"/>
+                  </svg>
+                  <span>{{tagStringValue(item.tags)}}</span>
+                  <span class="notes">{{item.notes}}</span>
+                  <span>{{item.type}}{{item.amount.toFixed(2)}}</span>
+                  <svg class="forward" aria-hidden="true" >
+                    <use :xlink:href="'#icon-qianjin'"/>
+                  </svg>
+                </li>
+              </router-link>
             </ol>
-          </router-link>
         </li>
       </ol>
       <div v-else class="noResult">
@@ -228,18 +227,6 @@ export default class Statistics extends Vue{
     padding:16px;
     text-align: center;
   }
-  //::v-deep .type-tabs-item{
-  //  background: #c4c4c4;
-  //  &.selected{
-  //    background: white;
-  //    &::after{
-  //      display: none;
-  //    }
-  //  }
-  //}
-  //::v-deep .interval-tabs-item{
-  //  height: 48px;
-  //}
   %item{
     padding: 7px 16px;
     line-height: 24px;

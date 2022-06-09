@@ -45,13 +45,6 @@ export default class EditLabel extends Vue {
        this.$router.replace('/404')
      }
    }
-  update(name:string){
-     if(this.currentTag){
-       this.$store.commit('updateTag',{
-         id:this.currentTag.id,name:name
-       })
-     }
-  }
   remove(){
     if(this.currentTag){
       this.$store.commit('removeTag',this.currentTag.id)
@@ -117,25 +110,6 @@ export default class EditLabel extends Vue {
       margin-right: 16px;
     }
   }
-
-
-  //>.IconLabel,.IconName{
-  //  border-bottom:1px solid #f0f0f0;
-  //  margin:0 22px;
-  //  padding:15px 0;
-  //  display: flex;
-  //  align-items: center;
-  //  >.common{
-  //    width:16%;
-  //    color:#9a9a9a;
-  //  }
-  //  >svg{
-  //    width: 18px;
-  //    height: 18px;
-  //    color: #01c1c6;
-  //    margin-right: 16px;
-  //  }
-  //}
 }
 .button-wrapper {
   position: absolute;
