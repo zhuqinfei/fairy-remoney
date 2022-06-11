@@ -2,7 +2,7 @@
   <div class="edit">
     <div class="navBar">
       <Icon class="leftIcon" name="left" @click="goBack"/>
-      <span class="title">标签管理</span>
+      <span class="title">支出管理</span>
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">

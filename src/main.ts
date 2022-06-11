@@ -31,3 +31,7 @@ window.onload=function(){
   },300)
 }
 
+if(document.documentElement.clientWidth>500){
+  window.alert("为保证浏览效果，请用手机浏览本页面")
+}
+

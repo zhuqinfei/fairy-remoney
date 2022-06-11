@@ -13,7 +13,6 @@ export default class Chart1 extends Vue {
   chart?:any
 
   mounted(){
-    console.log(this.options)
     if(this.options===undefined){
      return  console.error('options 为空')
     }
